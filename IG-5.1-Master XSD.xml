@@ -1,0 +1,1774 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+Description: [Job type:50] Analytics data export mapping definition for Non Compass master job type without OrderItems.
+Type: "POS"  Version: 1.2
+--><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Extract">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Systems">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="System" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the Systems that are defined. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemName" type="xs:string" use="optional">
+                    <!-- The name of the System. -->
+                    <!-- Example: Some System -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Locations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Location" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the location that maps to a combination of Enterprise, division, profit center and store. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="EnterpriseID" type="xs:integer" use="optional">
+                    <!-- Integer value of the enterprise ID. This value would map to the Enterprise name. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="EnterpriseName" type="xs:string" use="optional">
+                    <!-- The name of the enterprise. -->
+                    <!-- Example: Hotel Hospitality -->
+                  </xs:attribute>
+                  <xs:attribute name="DivisionID" type="xs:integer" use="optional">
+                    <!-- Integer value of the division ID. This value would map to the Division name. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="DivisionName" type="xs:string" use="optional">
+                    <!-- The name of the division. -->
+                    <!-- Example: Division1 -->
+                  </xs:attribute>
+                  <xs:attribute name="StoreID" type="xs:integer" use="optional">
+                    <!-- Integer value of the store ID. This value would map to the store name. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="StoreName" type="xs:string" use="optional">
+                    <!-- The name of the store. -->
+                    <!-- Example: Store1 -->
+                  </xs:attribute>
+                  <xs:attribute name="ProfitCenterID" type="xs:integer" use="optional">
+                    <!-- Integer value of theProfit Center ID. This value would map to the profit center name. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="ProfitCenterName" type="xs:string" use="optional">
+                    <!-- The name of the profit center. -->
+                    <!-- Example: Cafe 1 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveFrom" type="xs:dateTime" use="optional">
+                    <!-- The date when the location started transactions. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveTo" type="xs:dateTime" use="optional">
+                    <!-- The date when the location ended transactions. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="TableCount" type="xs:integer" use="optional">
+                    <!-- The number of tables in a restaurant. For single-pass restaurants such as cafetarias, this could be zero or may not be configured. -->
+                    <!-- Examples: 0, 15, 13 -->
+                  </xs:attribute>
+                  <xs:attribute name="SeatingCapacity" type="xs:integer" use="optional">
+                    <!-- The total seating capacity of a restaurant. For single-pass restaurants such as cafetarias, this could be zero or may not be configured. -->
+                    <!-- Examples: 0, 212, 150 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Employees">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Employee" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the employee. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="EmployeeID" type="xs:integer" use="optional">
+                    <!-- Integer value of the employee ID. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="EmployeeName" type="xs:string" use="optional">
+                    <!-- The first and last name of the employee. -->
+                    <!-- Example: Kathy Maynard -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveFrom" type="xs:dateTime" use="optional">
+                    <!-- The date when the employee joined the organization. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveTo" type="xs:dateTime" use="optional">
+                    <!-- The date when the employee left the organization. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="PrimaryJobCode" type="xs:integer" use="optional">
+                    <!-- The ID of the job code of the employee. -->
+                    <!-- Example: 5 -->
+                  </xs:attribute>
+                  <xs:attribute name="PrimaryJobName" type="xs:string" use="optional">
+                    <!-- The name of the job of the employee. -->
+                    <!-- Example: Bartender -->
+                  </xs:attribute>
+                  <xs:attribute name="EnterpriseID" type="xs:integer" use="optional">
+                    <!-- The Enterprise ID where a Division, store or profit center is located in. -->
+                    <!-- Examples: 1, 2 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Discounts">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Discount" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the discount. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="DiscountID" type="xs:integer" use="optional">
+                    <!-- Integer value of the discount ID. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="DiscountName" type="xs:string" use="optional">
+                    <!-- The name given to the promotion / discount. -->
+                    <!-- Example: Employee 25% -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveFrom" type="xs:dateTime" use="optional">
+                    <!-- The date when the discount was valid. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveTo" type="xs:dateTime" use="optional">
+                    <!-- The date when the discount would end. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EnterpriseID" type="xs:integer" use="optional">
+                    <!-- The Enterprise ID where a Division, store or profit center is located in. -->
+                    <!-- Examples: 1, 2 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MealPeriods">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MealPeriod" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the meal period. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="MealPeriodID" type="xs:integer" use="optional">
+                    <!-- Integer value of the meal period. Each ID maps to a meal period name. -->
+                    <!-- Example: 3 -->
+                  </xs:attribute>
+                  <xs:attribute name="MealPeriodName" type="xs:string" use="optional">
+                    <!-- The name of the meal period that maps to the MealPeriodID. -->
+                    <!-- Example: Happy Hour -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveFrom" type="xs:dateTime" use="optional">
+                    <!-- The time from when the meal period begins. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveTo" type="xs:dateTime" use="optional">
+                    <!-- The time when the particular meal period would end. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EnterpriseID" type="xs:integer" use="optional">
+                    <!-- TBD The Enterprise ID where a Division, store or profit center is located in. -->
+                    <!-- Examples: 1, 2 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TerminalTypes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TerminalType" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the transaction type. -->
+                    <!-- Examples: 0, 1, 2, 3, 4 -->
+                  </xs:attribute>
+                  <xs:attribute name="TerminalTypeName" type="xs:string" use="optional">
+                    <!-- The terminal type where the transaction took place. -->
+                    <!-- Examples: Terminal, 3rd Party POS, Kiosk, OnDemand -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tenders">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Tender" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the tender type. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderID" type="xs:integer" use="optional">
+                    <!-- Integer value indicating the type of tender used. -->
+                    <!-- Example: 2 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderName" type="xs:string" use="optional">
+                    <!-- Tender name is the type of tender offered for a particular transaction. The name maps to the TenderID. -->
+                    <!-- Examples: Cash, Visa, Check, Master Card -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderClassName" type="xs:string" use="optional">
+                    <!-- This is a rarely used field but is used to group tender types into a category. It can have a NULL value and depends on how the business wants to configure it. -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveFrom" type="xs:dateTime" use="optional">
+                    <!-- The time when the customer tendered the payment. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveTo" type="xs:dateTime" use="optional">
+                    <!-- The time when the check was closed and transaction completed. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EnterpriseID" type="xs:integer" use="optional">
+                    <!-- The Enterprise ID where a Division, store or profit center is located in. -->
+                    <!-- Examples: 1, 2 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MenuItems">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MenuItem" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the menu item. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="MenuItemID" type="xs:integer" use="optional">
+                    <!-- Integer value of the menu item. This value maps to the menu item name. -->
+                    <!-- Examples: 15603, 700496 -->
+                  </xs:attribute>
+                  <xs:attribute name="MenuItemName" type="xs:string" use="optional">
+                    <!-- The name of the menu item. -->
+                    <!-- Examples: Brownie, Baked Lays -->
+                  </xs:attribute>
+                  <xs:attribute name="ProductClassID" type="xs:integer" use="optional">
+                    <!-- Integer value of the Product class. Menu items are grouped into several Product classes. Each ProductClassID maps to a Product Class Name. -->
+                    <!-- Examples: 1, 3, 77 -->
+                  </xs:attribute>
+                  <xs:attribute name="ProductClassName" type="xs:string" use="optional">
+                    <!-- The name of the Product Class. -->
+                    <!-- Examples: Crackers, Appetizers -->
+                  </xs:attribute>
+                  <xs:attribute name="RevCategoryID" type="xs:integer" use="optional">
+                    <!-- For revenue reporting, menu items are categorized into revenue categories. -->
+                    <!-- Examples: 13, 112 -->
+                  </xs:attribute>
+                  <xs:attribute name="RevCategoryName" type="xs:string" use="optional">
+                    <!-- The name of the revenue category. -->
+                    <!-- Examples: Food, Bev-Alcohol, Gift Shop -->
+                  </xs:attribute>
+                  <xs:attribute name="ReportCategoryID" type="xs:integer" use="optional">
+                    <!-- ID of the report category. Each ID will map to a report category name. -->
+                    <!-- Examples: 1, 131 -->
+                  </xs:attribute>
+                  <xs:attribute name="ReportCategoryName" type="xs:string" use="optional">
+                    <!-- Name of the report category. -->
+                    <!-- Example: RptCat1 -->
+                  </xs:attribute>
+                  <xs:attribute name="SKUNumber" type="xs:string" use="optional">
+                    <!-- A unique number that identifies the menu item. The format depends on how the scheme used by the business. -->
+                    <!-- Examples: 45376455672, 30554 -->
+                  </xs:attribute>
+                  <xs:attribute name="CostAmount" type="xs:decimal" use="optional">
+                    <!-- The cost amount of the menu item. This is non-zero only if configured. -->
+                    <!-- Example: 10.80 -->
+                  </xs:attribute>
+                  <xs:attribute name="StoreCreatedID" type="xs:integer" use="optional">
+                    <!-- The ID of the menu item that is created by the store. -->
+                    <!-- Examples: 1, 4, 0 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveFrom" type="xs:dateTime" use="optional">
+                    <!-- The time when the the menu item was first introduced. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveTo" type="xs:dateTime" use="optional">
+                    <!-- The time  when the menu item was retired. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EnterpriseID" type="xs:integer" use="optional">
+                    <!-- The Enterprise ID where a Division, store or profit center is located in. -->
+                    <!-- Examples: 1, 2 -->
+                  </xs:attribute>
+                  <xs:attribute name="SoldByWeight" type="xs:boolean" use="optional">
+                    <!-- A property of the item determining if item is sold by weight or not. A value of true indicates that the item is sold by weight and false indicates that it is not sold by weight. -->
+                    <!-- Examples: true, false -->
+                  </xs:attribute>
+                  <xs:attribute name="TaxIncludedFlag" type="xs:boolean" use="optional">
+                    <!-- A property of the item determining if item is tax included or not. A value of true indicates that the item is tax included and false indicates that it is not tax included. -->
+                    <!-- Examples: true, false -->
+                  </xs:attribute>
+                  <xs:attribute name="TaxGroupId" type="xs:integer" use="optional">
+                    <!-- An identifier for the Tax group -->
+                    <!-- Examples: 13, 112 -->
+                  </xs:attribute>
+                  <xs:attribute name="TaxGroupName" type="xs:string" use="optional">
+                    <!-- Name of the tax group. -->
+                    <!-- Example: Default Tax Group -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tables">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Table" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the table. -->
+                    <!-- Examples: 620, 622, 623, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="MaxSeats" type="xs:integer" use="optional">
+                    <!-- Maximum number of seats available for each table in a restaurant. -->
+                    <!-- Examples: 4, 8, 2 -->
+                  </xs:attribute>
+                  <xs:attribute name="TableName" type="xs:string" use="required">
+                    <!-- The table name as returned by the IG POS system. This will only be present if configured appropriately. -->
+                    <!-- Examples: M106, LR44 -->
+                  </xs:attribute>
+                  <xs:attribute name="TableNumber" type="xs:string" use="optional">
+                    <!-- A table number may be used instead of a table name. This field represents the table number. -->
+                    <!-- Examples: 1, 2, 5 -->
+                  </xs:attribute>
+                  <xs:attribute name="SmokingFlag" type="xs:boolean" use="optional">
+                    <!-- A property of a table determining if smoking is allowed on the table or not. -->
+                    <!-- Examples: true, false -->
+                  </xs:attribute>
+                  <xs:attribute name="OutsideFlag" type="xs:boolean" use="optional">
+                    <!-- A property of a table determining if it is present inside the restaurant or outside. -->
+                    <!-- Examples: true, false -->
+                  </xs:attribute>
+                  <xs:attribute name="ViewFlag" type="xs:boolean" use="optional">
+                    <!-- A property of a table determining if the table has a view or not. -->
+                    <!-- Examples: true, false -->
+                  </xs:attribute>
+                  <xs:attribute name="BoothFlag" type="xs:boolean" use="optional">
+                    <!-- A property of a table determining if it is a booth or a regular table with chairs. -->
+                    <!-- Examples: true, false -->
+                  </xs:attribute>
+                  <xs:attribute name="PrivateFlag" type="xs:boolean" use="optional">
+                    <!-- A property of a table determining if the table has privacy as is applicable to that restaurant or not. -->
+                    <!-- Examples: true, false -->
+                  </xs:attribute>
+                  <xs:attribute name="VIPFlag" type="xs:boolean" use="optional">
+                    <!-- A property of a table determining if it is a table meant for very important people. -->
+                    <!-- Examples: true, false -->
+                  </xs:attribute>
+                  <xs:attribute name="EnterpriseID" type="xs:integer" use="optional">
+                    <!-- Integer value of the enterprise ID. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="LocationID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Locations/Location/@ID -->
+                    <!-- The integer value of the location ID. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Terminals">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Terminal" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the terminal that maps to a combination of terminal and location. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="TerminalID" type="xs:integer" use="optional">
+                    <!-- Integer value of the terminal ID. This value would map to the terminal name. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="TerminalName" type="xs:string" use="optional">
+                    <!-- The name of the terminal. -->
+                    <!-- Example: Terminal 1 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveFrom" type="xs:dateTime" use="optional">
+                    <!-- The date when the terminal started transactions. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveTo" type="xs:dateTime" use="optional">
+                    <!-- The date when the terminal ended transactions. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="LocationID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Locations/Location/@ID -->
+                    <!-- The ID of the location. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CheckTypes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CheckType" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the check type -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckTypeID" type="xs:integer" use="optional">
+                    <!-- Integer value of the check type ID. This value would map to the check type name. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckTypeName" type="xs:string" use="optional">
+                    <!-- The name of the check type. -->
+                    <!-- Examples: Regular Check, large party -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckTypeDescription" type="xs:string" use="optional">
+                    <!-- The description of the check type. -->
+                    <!-- Example: Regular Check -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveFrom" type="xs:dateTime" use="optional">
+                    <!-- The date when the check type became available. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveTo" type="xs:dateTime" use="optional">
+                    <!-- The date when the check type stopped being used. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="PriceLevelId" type="xs:integer" use="optional">
+                    <!-- The ID of the price level. It maps to price level name -->
+                    <!-- Examples: 1, 2, 3, 4 -->
+                  </xs:attribute>
+                  <xs:attribute name="PriceLevelName" type="xs:string" use="optional">
+                    <!-- The name of the price level. -->
+                    <!-- Example: Regular -->
+                  </xs:attribute>
+                  <xs:attribute name="HierarchyLevel" type="xs:integer" use="optional">
+                    <!-- The ID of the hierarchy level. It maps to hierarchy level name. -->
+                    <!-- Examples: 1, 2, 3, 4 -->
+                  </xs:attribute>
+                  <xs:attribute name="HierarchyName" type="xs:string" use="optional">
+                    <!-- The name of the hierarchy level. -->
+                    <!-- Example: Regular -->
+                  </xs:attribute>
+                  <xs:attribute name="LocationID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Locations/Location/@ID -->
+                    <!-- The ID of the location. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Taxes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Tax" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the tax that maps to a combination of tax and profit center. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="TaxID" type="xs:integer" use="optional">
+                    <!-- Integer value of the tax ID. This value would map to the tax name. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="TaxName" type="xs:string" use="optional">
+                    <!-- The name of the tax. -->
+                    <!-- Example: Sales Tax -->
+                  </xs:attribute>
+                  <xs:attribute name="TaxCategoryID" type="xs:integer" use="optional">
+                    <!-- Integer value of the tax category ID. This value would map to the tax category name. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="TaxCategoryName" type="xs:string" use="optional">
+                    <!-- The name of the tax category. -->
+                    <!-- Example: Federal Tax -->
+                  </xs:attribute>
+                  <xs:attribute name="TaxPercent" type="xs:decimal" use="optional">
+                    <!-- Decimal value of the tax percent. -->
+                    <!-- Examples: 5.0000, 10.0000 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveFrom" type="xs:dateTime" use="optional">
+                    <!-- The date when the tax was valid. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveTo" type="xs:dateTime" use="optional">
+                    <!-- The date when the tax expires. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="LocationID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Locations/Location/@ID -->
+                    <!-- The ID of the location. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="LimitTaxReportingFlag" type="xs:boolean" use="optional">
+                    <!-- Limit tax reporting flag. -->
+                    <!-- Examples: true, false -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ChoiceGroups">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ChoiceGroup" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the ChoiceGroup that maps to a combination of ChoiceGroup, Menu Item and Modifier. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="ChoiceGroupID" type="xs:integer" use="optional">
+                    <!-- Integer value of the Choice Group ID. This value would map to the Choice Group. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="EnterpriseID" type="xs:integer" use="optional">
+                    <!-- The name of the Enterprise. -->
+                    <!-- Examples: 1, 2, 23454 -->
+                  </xs:attribute>
+                  <xs:attribute name="MenuItemID" type="xs:integer" use="optional">
+                    <!-- Integer value of the menu item ID. This value would map to the choice group. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="ModifierID" type="xs:integer" use="optional">
+                    <!-- Integer value of the modifier ID. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Modifiers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Modifier" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the tax that maps to a combination of modifier and profit center. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="ModifierID" type="xs:integer" use="optional">
+                    <!-- Integer value of the modifier ID. This value would map to the modifier name. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="ModifierName" type="xs:string" use="optional">
+                    <!-- The name of the modifier. -->
+                    <!-- Example: Coke -->
+                  </xs:attribute>
+                  <xs:attribute name="ModifierMenuItemID" type="xs:integer" use="optional">
+                    <!-- Integer value of the Modifier Menu Item ID. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="CustomerId" type="xs:integer" use="optional">
+                    <!-- Integer value of the Customer ID. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="DivisionID" type="xs:integer" use="optional">
+                    <!-- Integer value of the division ID. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="EnterpriseID" type="xs:integer" use="optional">
+                    <!-- The Enterprise ID where a Division, store or profit center is located in. -->
+                    <!-- Examples: 1, 2 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveFrom" type="xs:dateTime" use="optional">
+                    <!-- The date when the Modifier was introduced. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveTo" type="xs:dateTime" use="optional">
+                    <!-- The date when the Modifier would retired. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="VoidReasons">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="VoidReason" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the void reason. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="VoidReasonName" type="xs:string" use="optional">
+                    <!-- The name of the void reason. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="VoidReasonID" type="xs:integer" use="optional">
+                    <!-- Integer value of the VoidReason ID. -->
+                    <!-- Examples: 1, 2, 344, 13184 -->
+                  </xs:attribute>
+                  <xs:attribute name="CustomerID" type="xs:integer" use="optional">
+                    <!-- Integer value of the Customer ID. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Checks">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Check" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="Id" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the check. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderedDateTime" type="xs:dateTime" use="optional">
+                    <!-- The date and time when the amount towards the check was tendered. This would be after the check was opened and before it is closed. -->
+                    <!-- Example: 2013-11-28T00:02:58 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckNumber" type="xs:integer" use="optional">
+                    <!-- Each check has a number. -->
+                    <!-- Example: 71530231 -->
+                  </xs:attribute>
+                  <xs:attribute name="AssociatedCheckNumber" type="xs:integer" use="optional">
+                    <!-- This is an Integer that compliments the Check number. -->
+                    <!-- Example: 0 -->
+                  </xs:attribute>
+                  <xs:attribute name="Covers" type="xs:integer" use="optional">
+                    <!-- The number of covers (guests) associated with a particular check. It will have a non-zero value only if entered in the system, otherwise it will be 0. -->
+                    <!-- Examples: 0, 1, 2 -->
+                  </xs:attribute>
+                  <xs:attribute name="VoidState" type="xs:integer" use="optional">
+                    <!-- Indicates if the Check was accepted or voided. The possible values are 0 and 1. -->
+                    <!-- Examples: 0, 1 -->
+                  </xs:attribute>
+                  <xs:attribute name="RefundFlag" type="xs:boolean" use="required">
+                    <!-- Indicates if a refund was done against this check. -->
+                    <!-- Examples: true, false -->
+                  </xs:attribute>
+                  <xs:attribute name="TableNumber" type="xs:string" use="optional">
+                    <!-- Represents the table numbers of sit-in restaurants. This would be blank for single pass cafetarias. The presence of the value also depends on if it was configured in the POS system. -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckOpenDuration" type="xs:integer" use="optional">
+                    <!-- Represents the time for which a particular check was open. This is the difference between the time it was closed and the time it was open. The value is in seconds. Clearly it is lower for single pass restaurants (cafetarias) and higher for sit-in restaurants. -->
+                  </xs:attribute>
+                  <xs:attribute name="TransactionDataTag" type="xs:string" use="optional">
+                    <!-- Can contain account number or loyalty identifiers etc. for reporting purposes. -->
+                  </xs:attribute>
+                  <xs:attribute name="GrossRevenue" type="xs:decimal" use="optional">
+                    <!-- The Gross Revenue of a particular check. This includes the item price, taxes, tips, gratuities, service charges. -->
+                    <!-- Examples: 4.14, 10.92 -->
+                  </xs:attribute>
+                  <xs:attribute name="DiscountAmount" type="xs:decimal" use="optional">
+                    <!-- The discount amount offered on a particular check. -->
+                    <!-- Examples: 0.00, 0.47, 1.37 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderAmount" type="xs:decimal" use="optional">
+                    <!-- The amount the customer tenders (offers) to settle their check. This usually matters when the tender form is cash, gift cards and other pre-paid cards. For credit cards and checks, always the exact amount would be tendered. For cache it is typically a round number. -->
+                    <!-- Examples: 20.00, 5.00 -->
+                  </xs:attribute>
+                  <xs:attribute name="GratuityAmount" type="xs:decimal" use="optional">
+                    <!-- When there are a large number of people in a party in a restaurant, instead of an optional tip amount, a mandatory amount called Gratuity is added to a check. This is usually a percentage of the check amount. Example - for a party of 8 with a check amount of "USD 205.67", the gratuity could be a percentage, for example 18% of the amount, which in this case is: "USD 37.02". -->
+                    <!-- Example: 37.02 -->
+                  </xs:attribute>
+                  <xs:attribute name="TipAmount" type="xs:decimal" use="optional">
+                    <!-- An amount added to the check amount by the customer to appreciate the services of the server. This is usually for sit-in restaurants but there may be a line item in single pass restaurants as well. -->
+                    <!-- Examples: 0.0, 5.00, 10.14 -->
+                  </xs:attribute>
+                  <xs:attribute name="TaxAmount" type="xs:decimal" use="optional">
+                    <!-- Taxes are charges on the check amount by the state or local government and are a percentage of the check amount. -->
+                    <!-- Example: 0.61 -->
+                  </xs:attribute>
+                  <xs:attribute name="ServiceChargeAmount" type="xs:decimal" use="optional">
+                    <!-- An amount added to the check amount for other services deemed necessary by the restaurant owner. Example - In most cases this would be 0.00, but when added, it would be a percentage of the check amount. -->
+                    <!-- Example: 0.00 -->
+                  </xs:attribute>
+                  <xs:attribute name="RoundedAmount" type="xs:decimal" use="optional">
+                    <!-- This is the amount rounded to the next whole number and is present to do easy calculations. -->
+                  </xs:attribute>
+                  <xs:attribute name="TaxableSalesAmount" type="xs:decimal" use="optional">
+                    <!-- This is the amount of taxable sale. -->
+                  </xs:attribute>
+                  <xs:attribute name="NonTaxableSalesAmount" type="xs:decimal" use="optional">
+                    <!-- This is the amount of non taxable sale. -->
+                  </xs:attribute>
+                  <xs:attribute name="LocationID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Locations/Location/@ID -->
+                    <!-- The ID of the location. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="MealPeriodID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/MealPeriods/MealPeriod/@ID -->
+                    <!-- Integer value of the meal period. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="CashierEmployeeID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Employees/Employee/@ID -->
+                    <!-- The cashier employee ID. For single pass restaurants, the server ID and cashier ID will likely be the same. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="ServerEmployeeID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Employees/Employee/@ID -->
+                    <!-- The server employee ID. For single pass restaurants, the server ID and cashier ID will likely be the same. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="TableID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Tenders/Tender/@ID -->
+                    <!-- The ID of the table in a restaurant. For single-pass restaurant, the attribute will be omitted since there are no tables in a single pass restaurant and so this is undefined. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="OpenedTerminalID" type="xs:integer" use="required">
+                    <!-- Integer value of the Opened Terminal ID. This value would map to the Terminal ID. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderedTerminalID" type="xs:integer" use="required">
+                    <!-- Integer value of the Tendered Terminal ID. This value would map to the Terminal ID. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckTypeID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/CheckTypes/CheckType/@ID -->
+                    <!-- Integer value of the check type. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="AuthorizingEmployeeID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Employees/Employee/@ID -->
+                    <!-- The Authorized employee ID -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckOpenTerminalTypeId" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/TerminalTypes/TerminalType/@ID -->
+                    <!-- The Id for the transaction type which opened the check. -->
+                    <!-- Examples: 0, 1, 2, 3, 4 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckClosedTerminalTypeId" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/TerminalTypes/TerminalType/@ID -->
+                    <!-- The Id for the transaction type which closed the check. -->
+                    <!-- Examples: 0, 1, 2, 3, 4 -->
+                  </xs:attribute>
+                  <xs:attribute name="VoidReasonID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/VoidReasons/VoidReason/@ID -->
+                    <!-- Integer value of the void reason. -->
+                    <!-- Examples: 0, 1, 2, 3, 4 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckOpenedDateTime" type="xs:dateTime" use="optional">
+                    <!-- The date and time when the check was opened. -->
+                    <!-- Example: 2013-11-28T00:02:58 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CheckTenders">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CheckTender" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the tender type. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="CreditTypeID" type="xs:integer" use="required">
+                    <!-- Integer value indicating the type of credit used. -->
+                    <!-- Examples: 0, 1, 2 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderedDateTime" type="xs:dateTime" use="optional">
+                    <!-- This is the tendered datetime. -->
+                  </xs:attribute>
+                  <xs:attribute name="CouponQuantity" type="xs:integer" use="optional">
+                    <!-- The number of coupons that were tendered as part of the transaction. -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderAmount" type="xs:decimal" use="optional">
+                    <!-- The The amount the customer tenders (offers) to settle their check. -->
+                    <!-- Example: 4.59 -->
+                  </xs:attribute>
+                  <xs:attribute name="BreakageAmount" type="xs:decimal" use="optional">
+                    <!-- The amount for breakage. -->
+                  </xs:attribute>
+                  <xs:attribute name="ChangeAmount" type="xs:decimal" use="optional">
+                    <!-- The amount of change due the customer. This usually matters when the tender form is cash. -->
+                    <!-- Examples: 22.00, 5.32 -->
+                  </xs:attribute>
+                  <xs:attribute name="TipAmount" type="xs:decimal" use="optional">
+                    <!-- The amount the customer tips on their check. -->
+                    <!-- Examples: 20.00, 5.00 -->
+                  </xs:attribute>
+                  <xs:attribute name="LocationID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Locations/Location/@ID -->
+                    <!-- The ID of the location. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="MealPeriodID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/MealPeriods/MealPeriod/@ID -->
+                    <!-- Integer value of the meal period. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Tenders/Tender/@ID -->
+                    <!-- ID of the tender used in a transaction. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="CashierEmployeeID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Employees/Employee/@ID -->
+                    <!-- The cashier employee ID. For single pass restaurants, the server ID and cashier ID will likely be the same. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="ServerEmployeeID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Employees/Employee/@ID -->
+                    <!-- The server employee ID. For single pass restaurants, the server ID and cashier ID will likely be the same. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckSalesID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Checks/Check/@ID -->
+                    <!-- The ID of the Check used in the transaction. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="AdditionalTenderData" type="xs:string" use="optional">
+                    <!-- The additional tender data printed on the bottom of generic authorization payments. -->
+                    <!-- Example: text -->
+                  </xs:attribute>
+                  <xs:attribute name="PostingAccount" type="xs:string" use="optional">
+                    <!-- The posting account number after account inquiry. -->
+                    <!-- Example: text -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CheckItems">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CheckItem" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the item that is part of a check. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="MenuItemStatus" type="xs:integer" use="optional">
+                    <!-- Integer value indicating the status of the menu item status. -->
+                    <!-- Example: 0 -->
+                  </xs:attribute>
+                  <xs:attribute name="ItemsConsumed" type="xs:integer" use="optional">
+                    <!-- This is the number of items consumed and is different from the number of Items sold. It does not include the number of Items that were sold but returned. Items Consumed = Items Sold - Items returned. -->
+                  </xs:attribute>
+                  <xs:attribute name="ItemsSold" type="xs:integer" use="optional">
+                    <!-- The number of items sold. This includes items that may be returned later plus the Items that were consumed. -->
+                  </xs:attribute>
+                  <xs:attribute name="ConsumedCost" type="xs:decimal" use="optional">
+                    <!-- The cost of all the items consumed. This does not include Items that were returned. -->
+                    <!-- Examples: 0.0000, 3.2500, 1.7900 -->
+                  </xs:attribute>
+                  <xs:attribute name="ConsumedWeight" type="xs:decimal" use="optional">
+                    <!-- The weight of the Items consumed. -->
+                    <!-- Example: 1.2345 -->
+                  </xs:attribute>
+                  <xs:attribute name="RevenueCostAmount" type="xs:decimal" use="optional">
+                    <!-- The revenue of the Items sold. -->
+                  </xs:attribute>
+                  <xs:attribute name="RevenueWeight" type="xs:decimal" use="optional">
+                    <!-- The revenue generated by Items sold. -->
+                  </xs:attribute>
+                  <xs:attribute name="GrossRevenue" type="xs:decimal" use="optional">
+                    <!-- The total revenue after selling items. -->
+                    <!-- Example: 4.2900 -->
+                  </xs:attribute>
+                  <xs:attribute name="DiscountAmount" type="xs:decimal" use="optional">
+                    <!-- The discount amount offered on a particular check. These are decimal values in USD. -->
+                    <!-- Examples: 0.00, 0.47, 1.37 -->
+                  </xs:attribute>
+                  <xs:attribute name="SKU" type="xs:string" use="optional">
+                    <!-- A unique number that identifies the item. This is either a 7 digit number, or an 11-digit number. -->
+                    <!-- Examples: 3444009, 28000772123 -->
+                  </xs:attribute>
+                  <xs:attribute name="Price" type="xs:decimal" use="optional">
+                    <!-- The price of an Item. -->
+                  </xs:attribute>
+                  <xs:attribute name="VoidState" type="xs:integer" use="optional">
+                    <!-- States if the Check was accepted or voided. -->
+                    <!-- Examples: 0, 1 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderedDateTime" type="xs:dateTime" use="optional">
+                    <!-- This is the tendered datetime. -->
+                  </xs:attribute>
+                  <xs:attribute name="MenuItemID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/MenuItems/MenuItem/@ID -->
+                    <!-- An integer that identifies the menu item. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckSalesID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Checks/Check/@ID -->
+                    <!-- ID of the Check. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="LocationID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Locations/Location/@ID -->
+                    <!-- The ID of the location. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="MealPeriodID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/MealPeriods/MealPeriod/@ID -->
+                    <!-- Integer value of the meal period. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="CashierID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Employees/Employee/@ID -->
+                    <!-- The cashier employee ID. For single pass restaurants, the server ID and cashier ID will likely be the same. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="ServerID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Employees/Employee/@ID -->
+                    <!-- The server employee ID. For single pass restaurants, the server ID and cashier ID will likely be the same. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CheckDiscounts">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CheckDiscount" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of discount instance applied on a check. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderedDateTime" type="xs:dateTime" use="optional">
+                    <!-- This is the tendered datetime. -->
+                  </xs:attribute>
+                  <xs:attribute name="DiscountAmount" type="xs:decimal" use="optional">
+                    <!-- The actual discount amount for the particular transaction. -->
+                    <!-- Example: 1.38000 -->
+                  </xs:attribute>
+                  <xs:attribute name="VoidState" type="xs:integer" use="optional">
+                    <!-- States if the discount was applied or voided. -->
+                    <!-- Examples: 0, 1 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckSalesID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Checks/Check/@ID -->
+                    <!-- ID of the Check. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="LocationID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Locations/Location/@ID -->
+                    <!-- The ID of the location. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="MealPeriodID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/MealPeriods/MealPeriod/@ID -->
+                    <!-- Integer value of the meal period. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="DiscountID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Discounts/Discount/@ID -->
+                    <!-- ID of the discount applied. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="ExtraText" type="xs:string" use="optional">
+                    <!-- Extra text of the discount -->
+                    <!-- Example: sale discount -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ItemModifiers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ItemModifier" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="Id" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the ItemModifier. -->
+                    <!-- Examples: 1,2,3,4,5 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderedDateTime" type="xs:dateTime" use="optional">
+                    <!-- The start date time of the enterprise since it is at the business period level. -->
+                    <!-- Example: 2013-11-28T00:02:58 -->
+                  </xs:attribute>
+                  <xs:attribute name="ModifierId" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Modifiers/Modifier/@ID -->
+                    <!-- Integer value of the modifier ID. This value would map to the modifier name. -->
+                    <!-- Examples: 1,2,100,102 -->
+                  </xs:attribute>
+                  <xs:attribute name="ItemId" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/MenuItems/MenuItem/@ID -->
+                    <!-- An integer that identifies the item. -->
+                    <!-- Examples: 15603,700496 -->
+                  </xs:attribute>
+                  <xs:attribute name="ServerID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Employees/Employee/@ID -->
+                    <!-- The server employee ID. For single pass restaurants, the server ID and cashier ID will likely be the same. -->
+                    <!-- Examples: 1,2,100,102 -->
+                  </xs:attribute>
+                  <xs:attribute name="MealPeriodId" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/MealPeriods/MealPeriod/@ID -->
+                    <!-- An integer that identifies the meal period -->
+                    <!-- Examples: 1,2,3,4,5 -->
+                  </xs:attribute>
+                  <xs:attribute name="LocationId" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Locations/Location/@ID -->
+                    <!-- An integer that identifies the location -->
+                    <!-- Examples: 1,2,3,4,5 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckTypeId" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/CheckTypes/CheckType/@ID -->
+                    <!-- An integer that identifies the check type -->
+                    <!-- Examples: 1,2,100,102 -->
+                  </xs:attribute>
+                  <xs:attribute name="GrossSalesAmount" type="xs:decimal" use="optional">
+                    <!-- Total revenue from modifier sales. -->
+                    <!-- Example: 1.38000 -->
+                  </xs:attribute>
+                  <xs:attribute name="DiscountAmount" type="xs:decimal" use="optional">
+                    <!-- Total discount on the check resulting from sales of the modifier. -->
+                    <!-- Example: 1.38000 -->
+                  </xs:attribute>
+                  <xs:attribute name="ModifierSold" type="xs:integer" use="optional">
+                    <!-- Total modifier sold, does not include voids and returns. -->
+                    <!-- Examples: 1,2,3,4 -->
+                  </xs:attribute>
+                  <xs:attribute name="ModifierConsumed" type="xs:integer" use="optional">
+                    <!-- Total modifier consumed, includes voids and returns. -->
+                    <!-- Examples: 1,2,3,4 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1,2,3,4,5 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CheckModifiers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CheckModifier" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="Id" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the CheckModifier. -->
+                    <!-- Examples: 1,2,3,4,5 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderedDateTime" type="xs:dateTime" use="optional">
+                    <!-- The tendered date time of the check. -->
+                    <!-- Example: 2013-11-28T00:02:58 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckSalesID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Checks/Check/@ID -->
+                    <!-- The ID of the Check used in the transaction. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckNumber" type="xs:integer" use="optional">
+                    <!-- Each check has a number. -->
+                    <!-- Example: 71530231 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckSequence" type="xs:integer" use="optional">
+                    <!-- Sequence of a Check tendered. -->
+                    <!-- Examples: 1,2,3,4 -->
+                  </xs:attribute>
+                  <xs:attribute name="ModifierId" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Modifiers/Modifier/@ID -->
+                    <!-- Integer value of the modifier ID. This value would map to the modifier name. -->
+                    <!-- Examples: 1,2,100,102 -->
+                  </xs:attribute>
+                  <xs:attribute name="ModifiedMenuItemId" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/MenuItems/MenuItem/@ID -->
+                    <!-- An integer that identifies the modified menu item. -->
+                    <!-- Examples: 1,2,3,4,1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="MenuItemCheckSeq" type="xs:integer" use="optional">
+                    <!-- Sequence of sold menu item. -->
+                    <!-- Examples: 1,2,3,4 -->
+                  </xs:attribute>
+                  <xs:attribute name="MealPeriodId" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/MealPeriods/MealPeriod/@ID -->
+                    <!-- An integer that identifies the meal period -->
+                    <!-- Examples: 1,2,3,4,5 -->
+                  </xs:attribute>
+                  <xs:attribute name="LocationId" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Locations/Location/@ID -->
+                    <!-- An integer that identifies the location -->
+                    <!-- Examples: 1,2,3,4,5 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckTypeId" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/CheckTypes/CheckType/@ID -->
+                    <!-- An integer that identifies the check type -->
+                    <!-- Examples: 1,2,100,102 -->
+                  </xs:attribute>
+                  <xs:attribute name="GrossSalesAmount" type="xs:decimal" use="optional">
+                    <!-- Total revenue from modifier sales. -->
+                    <!-- Example: 1.38000 -->
+                  </xs:attribute>
+                  <xs:attribute name="DiscountAmount" type="xs:decimal" use="optional">
+                    <!-- Total discount on the check resulting from sales of the modifier. -->
+                    <!-- Example: 1.38000 -->
+                  </xs:attribute>
+                  <xs:attribute name="ModifierSold" type="xs:integer" use="optional">
+                    <!-- Total modifier sold, does not include voids and returns. -->
+                    <!-- Examples: 1,2,3,4 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1,2,3,4,5 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EventTypes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EventType" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the event type. -->
+                    <!-- Examples: 3991, 3993 -->
+                  </xs:attribute>
+                  <xs:attribute name="EventName" type="xs:string" use="optional">
+                    <!-- Name of the event type -->
+                    <!-- Examples: Menu Item Added, Menu Item Voided -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EJTerminalMasters">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EJTerminalMaster" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of pos_electronic_journal -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="EventTypeId" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/EventTypes/EventType/@ID -->
+                    <!-- Identifier of the event type. Currently supports 3991, 3993, 3900 and 5013 event type IDs -->
+                    <!-- Examples: 3991, 3993 -->
+                  </xs:attribute>
+                  <xs:attribute name="EventDateTime" type="xs:dateTime" use="optional">
+                    <!-- The date and time when the event occurred. -->
+                    <!-- Example: 2013-11-28T00:02:58 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckNumber" type="xs:integer" use="optional">
+                    <!-- The check number associated with the event. -->
+                    <!-- Example: 71530231 -->
+                  </xs:attribute>
+                  <xs:attribute name="GrossRevenue" type="xs:decimal" use="optional">
+                    <!-- The transaction amount of particular item/event. -->
+                    <!-- Examples: 4.14, 10.92 -->
+                  </xs:attribute>
+                  <xs:attribute name="MessageText" type="xs:string" use="optional">
+                    <!-- The message text provides miscellaneous information about the event. -->
+                    <!-- Examples:  -1 Mojito -14.00, 1 Fruit Cup 5.00, Mgr: 226714, But.:7,2 -->
+                  </xs:attribute>
+                  <xs:attribute name="VoidID" type="xs:integer" use="optional">
+                    <!-- The ID of the Void transaction. -->
+                    <!-- Examples: 1, 2, 3, 4, 250 -->
+                  </xs:attribute>
+                  <xs:attribute name="LocationID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Locations/Location/@ID -->
+                    <!-- The ID of the location. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="TerminalID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Terminals/Terminal/@ID -->
+                    <!-- The ID of the terminal. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="MealPeriodID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/MealPeriods/MealPeriod/@ID -->
+                    <!-- Integer value of the meal period. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="MenuItemID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/MenuItems/MenuItem/@ID -->
+                    <!-- An integer that identifies the menu item. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="CashierID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Employees/Employee/@ID -->
+                    <!-- The cashier employee ID. For single pass restaurants, the server ID and cashier ID will likely be the same. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="ServerID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Employees/Employee/@ID -->
+                    <!-- The server employee ID. For single pass restaurants, the server ID and cashier ID will likely be the same. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="ActionEmployeeId" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Employees/Employee/@ID -->
+                    <!-- The action employee ID. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="InvolvedEmployeeID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Employees/Employee/@ID -->
+                    <!-- The involved employee ID. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckSalesID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Checks/Check/@ID -->
+                    <!-- ID of the Check. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="SKU" type="xs:string" use="optional">
+                    <!-- A unique number that identifies the item. This is either a 7 digit number, or an 11-digit number. -->
+                    <!-- Examples: 3444009, 28000772123 -->
+                  </xs:attribute>
+                  <xs:attribute name="VoidState" type="xs:integer" use="optional">
+                    <!-- States if the Check was accepted or voided. -->
+                    <!-- Examples: 0, 1 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CheckAccountDetails">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CheckAccountDetail" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of check_account detail. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="LoyaltyNumber" type="xs:string" use="optional">
+                    <!-- Loyalty Account Number. -->
+                    <!-- Examples: 00NUKLI8HK,0083FE95EC -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckSalesID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Checks/Check/@ID -->
+                    <!-- ID of the Check. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="FolioNumber" type="xs:string" use="optional">
+                    <!-- FolioNumber/PlayerId -->
+                    <!-- Examples: 123ABC, DEF456 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Tenders/Tender/@ID -->
+                    <!-- ID of the tender used in a transaction. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CheckCreditCardDetails">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CheckCreditCardDetail" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of check_credit_card_detail. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="CorrelationalId" type="xs:string" use="optional">
+                    <!-- A unique identifier of a guest based on his or her credit card number. -->
+                    <!-- Example: fc75c902a8244783a6d18c155a29c190d8514fdea75344333d797ef1058fc931 -->
+                  </xs:attribute>
+                  <xs:attribute name="InvoiceNumber" type="xs:string" use="optional">
+                    <!-- Invoice Number -->
+                    <!-- Examples: 048728, 01Z6GV23KV00P73PUBK87GHHEMAKB17A -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderSequenceId" type="xs:integer" use="optional">
+                    <!-- Sequence id of the tender -->
+                    <!-- Examples: 0, 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Tenders/Tender/@ID -->
+                    <!-- ID of the tender used in a transaction. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckSalesID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Checks/Check/@ID -->
+                    <!-- ID of the Check. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CheckTaxDetails">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CheckTaxDetail" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of check_credit_card_detail. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="TaxAmount" type="xs:decimal" use="optional">
+                    <!-- Tax charges of various tax types on the check amount by the state or local government -->
+                    <!-- Example: 0.200 -->
+                  </xs:attribute>
+                  <xs:attribute name="TaxBasis" type="xs:decimal" use="optional">
+                    <!-- Tax charges deducted on this basis in the check amount by the state or local government -->
+                    <!-- Example: 2.00 -->
+                  </xs:attribute>
+                  <xs:attribute name="TaxID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Taxes/Tax/@ID -->
+                    <!-- ID of the tax used in a transaction. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckSalesID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Checks/Check/@ID -->
+                    <!-- ID of the Check. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CheckGAAccountCharges">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CheckGAAccountCharge" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of check ga account charge detail. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderSequenceId" type="xs:integer" use="optional">
+                    <!-- Sequence id of the tender -->
+                    <!-- Examples: 0, 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="AccountName" type="xs:string" use="optional">
+                    <!-- Account Name -->
+                    <!-- Example: Name1 -->
+                  </xs:attribute>
+                  <xs:attribute name="PostingAccountNumber" type="xs:string" use="optional">
+                    <!-- Posting Account Number -->
+                    <!-- Example: PostingAcc1 -->
+                  </xs:attribute>
+                  <xs:attribute name="AuthAccountNumber" type="xs:string" use="optional">
+                    <!-- Auth Account Number -->
+                    <!-- Example: AuthAcc1 -->
+                  </xs:attribute>
+                  <xs:attribute name="PaymentAmount" type="xs:decimal" use="optional">
+                    <!-- Payment Amount -->
+                    <!-- Example: 100.0000 -->
+                  </xs:attribute>
+                  <xs:attribute name="TipAmount" type="xs:decimal" use="optional">
+                    <!-- Tip Amount -->
+                    <!-- Example: 100.0000 -->
+                  </xs:attribute>
+                  <xs:attribute name="RemainingBalanceAmount" type="xs:decimal" use="optional">
+                    <!-- Remaining Balance Amount -->
+                    <!-- Example: 100.0000 -->
+                  </xs:attribute>
+                  <xs:attribute name="AdditionalTenderData" type="xs:string" use="optional">
+                    <!-- Additional Tender Data -->
+                    <!-- Example: tenderdata1 -->
+                  </xs:attribute>
+                  <xs:attribute name="GAAccountID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/GAAccounts/GAAccount/@ID -->
+                    <!-- ID of the Ga Account used in a transaction. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="LocationID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Locations/Location/@ID -->
+                    <!-- The integer value of the location ID. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Tenders/Tender/@ID -->
+                    <!-- ID of the tender used in a transaction. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="CheckSalesID" type="xs:integer" use="optional">
+                    <!-- Foreign key: /Extract/Checks/Check/@ID -->
+                    <!-- The ID of the Check used in the transaction. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="GAAccounts">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="GAAccount" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of ga account. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="GaAccountName" type="xs:string" use="optional">
+                    <!-- GA Account Name -->
+                    <!-- Example: GaAccountName -->
+                  </xs:attribute>
+                  <xs:attribute name="GaAccountNumber" type="xs:string" use="optional">
+                    <!-- GA Account Number -->
+                    <!-- Example: 200 -->
+                  </xs:attribute>
+                  <xs:attribute name="GAAccountGenId" type="xs:integer" use="optional">
+                    <!-- Integer value of the GAAccountGenId. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="GATypeId" type="xs:integer" use="optional">
+                    <!-- Integer value of the GA Type ID. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="GATypeName" type="xs:string" use="optional">
+                    <!-- GA Type Name -->
+                    <!-- Example: Type1 -->
+                  </xs:attribute>
+                  <xs:attribute name="GAClassID" type="xs:integer" use="optional">
+                    <!-- Integer value of the GA Class ID. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="GAClassName" type="xs:string" use="optional">
+                    <!-- GA Class Name -->
+                    <!-- Example: Class1 -->
+                  </xs:attribute>
+                  <xs:attribute name="ProfitCenterGroupId" type="xs:integer" use="optional">
+                    <!-- Integer value of the ProfitCenterGroupId. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="ProfitCenterGroupName" type="xs:string" use="optional">
+                    <!-- Profit Center Group Name -->
+                    <!-- Example: Class1 -->
+                  </xs:attribute>
+                  <xs:attribute name="PostingAccountNumber" type="xs:string" use="optional">
+                    <!-- Posting Account Number -->
+                    <!-- Example: PostingAcc1 -->
+                  </xs:attribute>
+                  <xs:attribute name="CustomerId" type="xs:integer" use="optional">
+                    <!-- Integer value of the Customer ID. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveFrom" type="xs:dateTime" use="optional">
+                    <!-- The time from when the ga account begins. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveTo" type="xs:dateTime" use="optional">
+                    <!-- The time when the particular ga account would end. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EnterpriseID" type="xs:integer" use="optional">
+                    <!-- TBD The Enterprise ID where a Division, store or profit center is located in. -->
+                    <!-- Examples: 1, 2 -->
+                  </xs:attribute>
+                  <xs:attribute name="StoreID" type="xs:integer" use="optional">
+                    <!-- Integer value of the store ID. This value would map to the store name. -->
+                    <!-- Examples: 1, 2 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="GATypes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="GAType" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of ga type. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="GATypeId" type="xs:integer" use="optional">
+                    <!-- Integer value of the GATypeId. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="GATypeName" type="xs:string" use="optional">
+                    <!-- GA Type Name -->
+                    <!-- Example: GaTypeName1 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveFrom" type="xs:dateTime" use="optional">
+                    <!-- The time from when the ga type begins. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EffectiveTo" type="xs:dateTime" use="optional">
+                    <!-- The time when the particular ga type would end. -->
+                    <!-- Example: 2011-06-29T16:00:59.453 -->
+                  </xs:attribute>
+                  <xs:attribute name="EnterpriseID" type="xs:integer" use="optional">
+                    <!-- TBD The Enterprise ID where a Division, store or profit center is located in. -->
+                    <!-- Examples: 1, 2 -->
+                  </xs:attribute>
+                  <xs:attribute name="CustomerId" type="xs:integer" use="optional">
+                    <!-- Integer value of the Customer ID. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="CorporationId" type="xs:integer" use="optional">
+                    <!-- Integer value of the Corporation Id. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TenderMasters">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TenderMaster" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the tender master. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="EnterpriseID" type="xs:integer" use="optional">
+                    <!-- An identifier for enterprise. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="StoreID" type="xs:integer" use="optional">
+                    <!-- An identifier for store. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderID" type="xs:integer" use="optional">
+                    <!-- An identifier for Tender. This value would map to the tender name. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderName" type="xs:string" use="optional">
+                    <!-- The name of the tender. -->
+                    <!-- Example: Cafe 1 -->
+                  </xs:attribute>
+                  <xs:attribute name="RestrictedFlag" type="xs:boolean" use="optional">
+                    <!-- A flag indicating if it is a 'restricted' tender. This flag can be linked to /Extract/Tenders/Tender by mapping TenderID and EnterpriseID. -->
+                    <!-- Examples: true, false -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RevenueCatMasters">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RevenueCatMaster" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="ID" type="xs:integer" use="required">
+                    <!-- Primary key. -->
+                    <!-- Unique Identifier of the revenue category master. -->
+                    <!-- Examples: 1, 2, 3, 4, 1441000000013 -->
+                  </xs:attribute>
+                  <xs:attribute name="EnterpriseID" type="xs:integer" use="optional">
+                    <!-- An identifier for enterprise. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="StoreID" type="xs:integer" use="optional">
+                    <!-- An identifier for store. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="RevCategoryID" type="xs:integer" use="optional">
+                    <!-- An identifier for Revenue Category. This value would map to the revenue category name. -->
+                    <!-- Examples: 1, 2, 100, 102 -->
+                  </xs:attribute>
+                  <xs:attribute name="RevCategoryName" type="xs:string" use="optional">
+                    <!-- The name of the revenue category. -->
+                    <!-- Example: Cafe -->
+                  </xs:attribute>
+                  <xs:attribute name="TenderRestrictionFlag" type="xs:boolean" use="optional">
+                    <!-- A flag indicating if restricted tenders cannot be used for this revenue category. This flag can be linked to /Extract/MenuItems/MenuItem by mapping RevCategoryID and EnterpriseID. -->
+                    <!-- Examples: true, false -->
+                  </xs:attribute>
+                  <xs:attribute name="SystemID" type="xs:integer" use="required">
+                    <!-- Foreign key: /Extract/Systems/System/@ID -->
+                    <!-- Integer value of the system ID. This value would map to the System name. -->
+                    <!-- Examples: 1, 2, 3, 4, 1011000000001 -->
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+      <xs:attribute name="version" type="xs:nonNegativeInteger" use="required"/>
+      <xs:attribute name="typeId" type="xs:nonNegativeInteger" use="required"/>
+      <xs:attribute name="sequenceStart" type="xs:nonNegativeInteger" use="required"/>
+      <xs:attribute name="sequenceEnd" type="xs:positiveInteger" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
